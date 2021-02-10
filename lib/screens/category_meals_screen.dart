@@ -4,6 +4,7 @@ import '../dummy_data.dart';
 
 class CategoryMealScreen extends StatefulWidget {
   static const routName = 'category_meals';
+
   @override
   _CategoryMealScreenState createState() => _CategoryMealScreenState();
 }
@@ -11,27 +12,29 @@ class CategoryMealScreen extends StatefulWidget {
 class _CategoryMealScreenState extends State<CategoryMealScreen> {
   @override
   Widget build(BuildContext context) {
-    final routeArg= ModalRoute.of(context).settings.arguments as Map<String,String>;
+    final routeArg =
+        ModalRoute.of(context).settings.arguments as Map<String, String>;
     final categoryId = routeArg['id'];
     final categoryTitle = routeArg['title'];
     final categoryMeals = DUMMY_MEALS.where((meal) {
       return meal.categories.contains(categoryId);
-    }
-    ).toList();
+    }).toList();
     return Scaffold(
       appBar: AppBar(
         title: Text('Recipes'),
       ),
       body: ListView.builder(
-        itemBuilder:(ctx,index){
-          return MealItem(imageUrl: categoryMeals[index].imageUrl,
-          title: categoryMeals[index].title,
+        itemBuilder: (ctx, index) {
+          return MealItem(
+            id: categoryMeals[index].id,
+            imageUrl: categoryMeals[index].imageUrl,
+            title: categoryMeals[index].title,
             duration: categoryMeals[index].duration,
             complexity: categoryMeals[index].complexity,
             affordability: categoryMeals[index].affordability,
           );
-        } ,
-        itemCount:categoryMeals.length,
+        },
+        itemCount: categoryMeals.length,
       ),
     );
   }
