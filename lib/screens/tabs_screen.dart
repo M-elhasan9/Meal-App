@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/main_drawer.dart';
 import 'categories_screen.dart';
 import 'favorites_screen.dart';
 
@@ -50,6 +51,7 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
         ],
       ),
+      drawer: MainDrawer(),
     );
   }
 }
