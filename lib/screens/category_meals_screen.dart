@@ -21,7 +21,7 @@ class _CategoryMealScreenState extends State<CategoryMealScreen> {
     }).toList();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Recipes'),
+        title: Text(routeArg['title']),
       ),
       body: ListView.builder(
         itemBuilder: (ctx, index) {
