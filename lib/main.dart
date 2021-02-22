@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import './dummy_data.dart';
-import './models/meal.dart';
-import './screens/filters_screen.dart';
-import './screens/tabs_screen.dart';
-import './screens/category_meals_screen.dart';
-import './screens/meal_detail_screen.dart';
-import './screens/categories_screen.dart';
+import 'model/meal.dart';
+import './view/filters_screen.dart';
+import 'view/tabs_screen.dart';
+import 'view/category_meals_screen.dart';
+import './view/meal_detail_screen.dart';
+import './view/categories_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -60,8 +60,8 @@ class _MyAppState extends State<MyApp> {
       });
     }
   }
-  
-  bool _isMealFavorite(String id){
+
+  bool _isMealFavorite(String id) {
     return _favoriteMeals.any((meal) => meal.id == id);
   }
 
@@ -88,8 +88,8 @@ class _MyAppState extends State<MyApp> {
         '/': (context) => TabsScreen(_favoriteMeals),
         CategoryMealScreen.routName: (context) =>
             CategoryMealScreen(_availableMeals),
-        MealDetailScreen.routName: (context) => MealDetailScreen(
-            _toggleFavorite, _isMealFavorite),
+        MealDetailScreen.routName: (context) =>
+            MealDetailScreen(_toggleFavorite, _isMealFavorite),
         FiltersScreen.routeName: (context) =>
             FiltersScreen(_filters, _setFilters),
       },
